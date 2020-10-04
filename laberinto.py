@@ -177,7 +177,7 @@ def movimiento_fichas():
 
     if(ficha_elegida == 1):
 
-        color_matriz = mapa[7][0]
+        color_matriz = mapa[posicion_ficha_marron[0][posicion_ficha_marron[1]
         ficha_blanca_mo = ficha_blanca_marron(pos_x * tamano_cuadros, pos_y* tamano_cuadros)
         ficha_blanca_mo.dibujar_ficha(ventana)
         actualizar_mapa(posicion_ficha_marron,color_matriz)
