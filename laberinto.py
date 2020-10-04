@@ -56,8 +56,8 @@ pygame.display.set_caption("Kamisado")
 
 def movimiento_fichas():
     
-
     ficha_elegida = int(input("¿Cual ficha desea mover (1-8)?: "))
+
     print(ficha_elegida)
     print()
     print("Ingrese la nueva posicion ")
@@ -65,38 +65,205 @@ def movimiento_fichas():
     pos_y = int(input("Posicion y: "))
 
     posicion_ficha_marron = []
+    posicion_ficha_verde = []
+    posicion_ficha_rojo = []
+    posicion_ficha_amarilla = []
+    posicion_ficha_rosa = []
+    posicion_ficha_morada = []
+    posicion_ficha_azul = []
+    posicion_ficha_naranja = []
+    aux_pos_x_y = [0,0]
+
+    for i in range(8):
+        for j in range(8):
+
+            if matriz_fichas_blancas[i][j] == 1:
+
+                matriz_fichas_blancas[i][j] = 0
+
+                posicion_ficha_marron.append(i)
+                posicion_ficha_marron.append(j)
+                print(posicion_ficha_marron)
+
+                matriz_fichas_blancas[pos_x][pos_y] = 1
+                
+                aux_pos_x_y[0] = pos_x
+                aux_pos_x_y[1] = pos_y
+
+                actualizar_mapa(aux_pos_x_y,marron) 
+            
+            if matriz_fichas_blancas[i][j] == 2:
+
+                
+                matriz_fichas_blancas[i][j] = 0
+
+                posicion_ficha_verde.append(i)
+                posicion_ficha_verde.append(j)
+
+                matriz_fichas_blancas[pos_x][pos_y] = 2
+
+                aux_pos_x_y[0] = pos_x
+                aux_pos_x_y[1] = pos_y
+                actualizar_mapa(aux_pos_x_y,verde) 
+            
+            # if matriz_fichas_blancas[i][j] == 3:
+
+            #     matriz_fichas_blancas[i][j] = 0
+            #     posicion_ficha_rojo.append(i)
+            #     posicion_ficha_rojo.append(j)
+
+            #     matriz_fichas_blancas[pos_x][pos_y] = 3
+
+            #     aux_pos_x_y[0] = pos_x
+            #     aux_pos_x_y[1] = pos_y
+            #     actualizar_mapa(aux_pos_x_y,rojo) 
+
+            # if matriz_fichas_blancas[i][j] == 4:
+            #     matriz_fichas_blancas[i][j] = 0
+            #     posicion_ficha_amarilla.append(i)
+            #     posicion_ficha_amarilla.append(j)
+
+            #     matriz_fichas_blancas[pos_x][pos_y] = 4
+
+            #     aux_pos_x_y[0] = pos_x
+            #     aux_pos_x_y[1] = pos_y
+            #     actualizar_mapa(aux_pos_x_y,amarillo) 
+            
+            # if matriz_fichas_blancas[i][j] == 5:
+            #     matriz_fichas_blancas[i][j] = 0
+            #     posicion_ficha_rosa.append(i)
+            #     posicion_ficha_rosa.append(j)
+
+            #     matriz_fichas_blancas[pos_x][pos_y] = 5
+
+            #     aux_pos_x_y[0] = pos_x
+            #     aux_pos_x_y[1] = pos_y
+            #     actualizar_mapa(aux_pos_x_y,rosado) 
+            
+            # if matriz_fichas_blancas[i][j] == 6:
+            #     matriz_fichas_blancas[i][j] = 0
+            #     posicion_ficha_morada.append(i)
+            #     posicion_ficha_morada.append(j)
+
+            #     matriz_fichas_blancas[pos_x][pos_y] = 6
+
+            #     aux_pos_x_y[0] = pos_x
+            #     aux_pos_x_y[1] = pos_y
+            #     actualizar_mapa(aux_pos_x_y,morado) 
+            
+            # if matriz_fichas_blancas[i][j] == 7:
+            #     matriz_fichas_blancas[i][j] = 0
+            #     posicion_ficha_azul.append(i)
+            #     posicion_ficha_azul.append(j)
+
+            #     matriz_fichas_blancas[pos_x][pos_y] = 7
+
+            #     aux_pos_x_y[0] = pos_x
+            #     aux_pos_x_y[1] = pos_y
+
+            #     actualizar_mapa(aux_pos_x_y,azul) 
+            
+            # if matriz_fichas_blancas[i][j] == 8:
+            #     matriz_fichas_blancas[i][j] = 0
+            #     posicion_ficha_naranja.append(i)
+            #     posicion_ficha_naranja.append(j)
+
+            #     matriz_fichas_blancas[pos_x][pos_y] = 8
+
+            #     aux_pos_x_y[0] = pos_x
+            #     aux_pos_x_y[1] = pos_y
+
+            #     actualizar_mapa(aux_pos_x_y,naranja) 
 
     if(ficha_elegida == 1):
 
-        for i in range(8):
-            for j in range(8):
-                if matriz_fichas_blancas[i][j] == 1:
-
-                    posicion_ficha_marron.append(i)
-                    posicion_ficha_marron.append(j)
-        
-        color_matriz = mapa[posicion_ficha_marron[0]][posicion_ficha_marron[1]]
-        actualizar_mapa(posicion_ficha_marron,color_matriz)
-
-        print(color_matriz)
-        print("pos_color",color_matriz)
-        print(posicion_ficha_marron)
-
+        color_matriz = mapa[7][0]
         ficha_blanca_mo = ficha_blanca_marron(pos_x * tamano_cuadros, pos_y* tamano_cuadros)
         ficha_blanca_mo.dibujar_ficha(ventana)
+        actualizar_mapa(posicion_ficha_marron,color_matriz)
         
     if(ficha_elegida == 2):
 
+        color_matriz = mapa[posicion_ficha_verde[0]][posicion_ficha_verde[1]]
         ficha_blanca_ve = ficha_blanca_verde(pos_x * tamano_cuadros, pos_y* tamano_cuadros)
         ficha_blanca_ve.dibujar_ficha(ventana)
+        actualizar_mapa(posicion_ficha_verde,color_matriz)
+        
+    if(ficha_elegida == 3):
+        color_matriz = mapa[posicion_ficha_rojo[0]][posicion_ficha_rojo[1]]
+        ficha_blanca_ro = ficha_blanca_rojo(pos_x * tamano_cuadros, pos_y* tamano_cuadros)
+        ficha_blanca_ro.dibujar_ficha(ventana)
+        actualizar_mapa(posicion_ficha_rojo,color_matriz)
 
+    if(ficha_elegida == 4):
+        color_matriz = mapa[posicion_ficha_amarilla[0]][posicion_ficha_amarilla[1]]
+        ficha_blanca_ro = ficha_blanca_amarillo(pos_x * tamano_cuadros, pos_y* tamano_cuadros)
+        ficha_blanca_ro.dibujar_ficha(ventana)
+        actualizar_mapa(posicion_ficha_amarilla,color_matriz)
+
+    if(ficha_elegida == 5):
+        color_matriz = mapa[posicion_ficha_rosa[0]][posicion_ficha_rosa[1]]
+        ficha_blanca_ro = ficha_blanca_rosa(pos_x * tamano_cuadros, pos_y* tamano_cuadros)
+        ficha_blanca_ro.dibujar_ficha(ventana)
+        actualizar_mapa(posicion_ficha_rosa,color_matriz)
+
+    if(ficha_elegida == 6):
+        color_matriz = mapa[posicion_ficha_morada[0]][posicion_ficha_morada[1]]
+        ficha_blanca_ro = ficha_blanca_morada(pos_x * tamano_cuadros, pos_y* tamano_cuadros)
+        ficha_blanca_ro.dibujar_ficha(ventana)
+        actualizar_mapa(posicion_ficha_morada,color_matriz)
+
+    if(ficha_elegida == 7):
+        color_matriz = mapa[posicion_ficha_azul[0]][posicion_ficha_azul[1]]
+        ficha_blanca_ro = ficha_blanca_azul(pos_x * tamano_cuadros, pos_y* tamano_cuadros)
+        ficha_blanca_ro.dibujar_ficha(ventana)
+        actualizar_mapa(posicion_ficha_azul,color_matriz)
+
+    if(ficha_elegida == 8):
+        color_matriz = mapa[posicion_ficha_naranja[0]][posicion_ficha_naranja[1]]
+        ficha_blanca_ro = ficha_blanca_naranja(pos_x * tamano_cuadros, pos_y* tamano_cuadros)
+        ficha_blanca_ro.dibujar_ficha(ventana)
+        actualizar_mapa(posicion_ficha_naranja,color_matriz)
+    
+    
 def actualizar_mapa(pos_ficha,color):
     
     if (color == 3):
         
         pygame.draw.rect(ventana,marron,pygame.Rect(pos_ficha[1] * tamano_cuadros, pos_ficha[0] *tamano_cuadros,tamano_cuadros,tamano_cuadros))
-        pygame.display.update()
+        #pygame.display.update()
+
+    if (color == 8):
         
+        pygame.draw.rect(ventana,verde,pygame.Rect(pos_ficha[1] * tamano_cuadros, pos_ficha[0] *tamano_cuadros,tamano_cuadros,tamano_cuadros))
+    
+    if (color == 5):
+        
+        pygame.draw.rect(ventana,rojo,pygame.Rect(pos_ficha[1] * tamano_cuadros, pos_ficha[0] *tamano_cuadros,tamano_cuadros,tamano_cuadros))
+    
+    if (color == 4):
+        
+        pygame.draw.rect(ventana,amarillo,pygame.Rect(pos_ficha[1] * tamano_cuadros, pos_ficha[0] *tamano_cuadros,tamano_cuadros,tamano_cuadros))
+    
+    if (color == 7):
+        
+        pygame.draw.rect(ventana,rosado,pygame.Rect(pos_ficha[1] * tamano_cuadros, pos_ficha[0] *tamano_cuadros,tamano_cuadros,tamano_cuadros))
+    
+    if (color == 6):
+        
+        pygame.draw.rect(ventana,morado,pygame.Rect(pos_ficha[1] * tamano_cuadros, pos_ficha[0] *tamano_cuadros,tamano_cuadros,tamano_cuadros))
+   
+    if (color == 2):
+        
+        pygame.draw.rect(ventana,azul,pygame.Rect(pos_ficha[1] * tamano_cuadros, pos_ficha[0] *tamano_cuadros,tamano_cuadros,tamano_cuadros))
+
+    if (color == 1):
+        
+        pygame.draw.rect(ventana,naranja,pygame.Rect(pos_ficha[1] * tamano_cuadros, pos_ficha[0] *tamano_cuadros,tamano_cuadros,tamano_cuadros))
+   
+   
+    pygame.display.update()
+       
 def construir_mapa(mapa):
     x = 0
     y = 0 
@@ -362,12 +529,12 @@ construir_fichas_negras(matriz_fichas_negras[0])
 construir_fichas_blancas(matriz_fichas_blancas[7])
 
 pygame.display.update()
-movimiento_fichas()
-pygame.display.update()
-
 
 while True:
     
+
+    movimiento_fichas()
+    pygame.display.update()
     #pygame.display.update()
 
     for evento in pygame.event.get():
